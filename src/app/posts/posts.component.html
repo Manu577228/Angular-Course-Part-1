@@ -1,0 +1,8 @@
+<h1> {{ title }} </h1>   <!-- Data binding or string interpolation -->
+<h1>{{ 100+50 }}</h1>    <!-- Data binding or string interpolation -->
+
+{{fromParent}}           <!-- sharing data between components -->
+
+<app-postslist  [fromPostParent]="postParentMessage"></app-postslist> <!-- sharing data from post component to postlists component -->
+
+<button (click)="sendMessage()">Click</button>

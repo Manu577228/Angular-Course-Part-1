@@ -1,0 +1,53 @@
+<h1>Angular App</h1>
+
+<p>{{message}}</p> <!-- Message from child component to parent component using @view decorator -->
+
+<app-navbar></app-navbar>
+<app-posts  [fromParent]="parentMessage" (messageEvent)="recieveMessage($event)"></app-posts>
+
+<p>{{ fromChildOutput }}</p>
+
+<p>{{ messageOne }}</p>  <!-- String Interpolation -->  
+
+<img src="{{imgURL}}" alt=""> <!-- String interpolation --> 
+<img [src]="imgURL" alt="">  <!-- Property Binding --> 
+
+<h1 [class.text-red] = "bool" >Angular Application</h1> <!-- Property Binding --> 
+<h1 [style.color] = "bool ? 'blue' : 'red' "> Style Binding</h1> <!-- style Binding --> 
+
+<button (click) = "buttonClick()" >CLICK ME</button> <br /> <br/> <!-- Event Binding --> 
+
+<!-- <input type="text" (keyup.enter) = "onKeyup(username.value)" #username>   Event Filtering & Template variables   -->
+
+<!-- <input type="text" (keyup.enter) = "onKeyup(username.value)" #username> <br /><br /> -->
+
+<!-- Two way DataBinding -->
+<input type = "text" [(ngModel)] = "userName" (keyup.enter) = "onKeyup()"> <!-- we use two way data binding most of the times-->
+<br /> <br/>
+
+<!-- One way & Two way DataBinding -->
+<input type= "text" [value] = 'textValue' (keyup.enter) = "onKeyup()">
+<br /> <br/>
+<input type= "text" [(ngModel)] = 'textValue' (keyup.enter) = "onKeyup()">
+
+<!-- Task -->
+
+<div class="form-area">
+    <h1>Post Form</h1>
+    <input type = 'text' placeholder="Post title" [(ngModel)] = "postTitle">
+    <br /><br />
+    <textarea placeholder="Post Details" [(ngModel)] = "postDetails"></textarea>
+    <br /><br />
+    <input type="text" placeholder="Post Image URL" [(ngModel)] = "imageURL">
+    <br /><br />
+    <input type="text" placeholder="Post URL" [(ngModel)] = "postURL">
+    <br /><br />
+    <input type="checkbox" [(ngModel)] = "addBackground"> Add Background
+</div>
+
+<div class="preview">
+    <h1> <span [class.add-background]="addBackground">{{ postTitle }}</span> </h1>
+    <p> {{ postDetails }} </p>
+    <img [src] = "imageURL" alt="">
+    <a [href] = "postURL" target="_blank" [style.display] = "postURL ? 'block' : 'none'">More Details</a>
+</div>
